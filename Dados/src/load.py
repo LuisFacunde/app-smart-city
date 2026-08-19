@@ -1,14 +1,21 @@
-class Load:
-    def __init__(self):
-        pass
+from pathlib import Path
+import json
 
-    def load_json(self, nome_arquivo: str, data: list):
+
+class Load:
+    def __init__(self, output_dir="json"):
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def load_json(self, nome_arquivo, data):
         """
-        Método de extração de dados do PNAPC
+        Método responsável por salvar os dados em arquivo json
 
         Atributos:
-            nome_arquivo: string
-            data: list (resultada do request da API do IBGE)
+            nome_arquivo: str
+            data: dict
         """
-        with open(f"{nome_arquivo}.json", "w", encoding="utf-8") as f:
-            f.write(str(data))
+        caminho_arquivo = self.output_dir / f"{nome_arquivo}.json"
+
+        with open(caminho_arquivo, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
