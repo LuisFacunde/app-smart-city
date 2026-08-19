@@ -1,5 +1,5 @@
-from Dados.src.extract import Extract
-from Dados.src.load import Load
+from src.extract import Extract
+from src.load import Load
 
 ext = Extract()
 data = ext.pnadc()
