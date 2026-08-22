@@ -3,7 +3,7 @@ import json
 
 
 class Load:
-    def __init__(self, output_dir="json"):
+    def __init__(self, output_dir="jsons"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
